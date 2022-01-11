@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: hello-world
+  namespace: prod
   labels:
     app: hello-world-web-app-development
     env: development
@@ -13,5 +14,17 @@ spec:
   containers:
     - name: hello-world
       image: dockercloud/hello-world
+      volumeMounts:
+      - mountPath: /var/run/secrets/tokens
+        name: adminToken
+  serviceAccountName: admin
+  volumes:
+  - name: adminToken
+    projected:
+      sources:
+      - serviceAccountToken:
+          path: adminToken
+          expirationSeconds: 86400
+          audience: some-oidc-audience
       ports:
         - containerPort: 80
