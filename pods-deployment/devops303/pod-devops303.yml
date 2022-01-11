@@ -12,6 +12,6 @@ spec:
         app: devops303-web-app-develop
   containers:
     - name: devops303
-      image: alpine
+      image: dockercloud/hello-world
       ports:
         - containerPort: 80

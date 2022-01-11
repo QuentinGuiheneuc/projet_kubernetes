@@ -1,0 +1,40 @@
+apiVersoin: 1
+kind: ConfigMap
+metadata:
+  name: redis-configmap
+data:
+  nginx.conf: |
+    http:{
+      upstream myapp1 {
+          least_conn;
+          server http://apps_1:8884;
+          server http://apps_2:8884;
+          server http://apps_3:8884;
+      }
+
+      server {
+          listen 80;
+          location / {
+              proxy_pass http://myapp1;
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection 'upgrade';
+              proxy_set_header Host $host;
+              proxy_cache_bypass $http_upgrade;
+          }
+      }
+    }
+  nginx1.conf: |
+    events {
+      worker_connections 1000;
+    }
+
+    http {
+      server {
+        listen 80;
+        location / {
+          proxy_pass http://app:8080;
+        }
+      }
+    }
+
