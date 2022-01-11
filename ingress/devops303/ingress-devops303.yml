@@ -1,10 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: applicationingress
+  name: devops303ingress
 spec:
   rules:
-    - host: quentin/devops303.fr
+    - host: devops303.fr
       http:
         paths:
           - path: /
