@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: devops303
+  labels:
+    app: devops303-web-app-development
+    env: development
+spec:
+  template:
+    metadata:
+      labels:
+        app: devops303-web-app-develop
+  containers:
+    - name: devops303
+      image: alpine
+      ports:
+        - containerPort: 80

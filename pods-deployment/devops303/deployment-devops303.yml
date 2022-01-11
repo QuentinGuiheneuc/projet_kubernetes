@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops303-web-app-develo
+  labels:
+    app: devops303-web-app-development
+    env: development
+spec:
+  selector:
+    matchLabels:
+      app: devops303-web-app-development
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: devops303-web-app-develop
+    spec:
+      containers:
+        - name: devops303-web-app-develop
+          image: alpine
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
