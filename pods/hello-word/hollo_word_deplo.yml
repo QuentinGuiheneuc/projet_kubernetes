@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: appdeployment
+  name: hello-world-web-app-develo
   labels:
-    app: AppDeployment
+    app: hello-world-web-app-development
     env: development
 spec:
   selector:
     matchLabels:
-      app: application
+      app: hello-world-web-app-development
   replicas: 2
   template:
     metadata:
       labels:
-        app: application
+        app: hello-world-web-app-develop
     spec:
       containers:
-        - name: application
+        - name: hello-world-web-app-develop
           image: dockercloud/hello-world
           ports:
             - containerPort: 80

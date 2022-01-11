@@ -11,6 +11,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: network_deployment_web_http
+                name: hello-world-service
                 port:
                   number: 80

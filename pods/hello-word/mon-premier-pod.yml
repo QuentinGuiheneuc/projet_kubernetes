@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world
+  labels:
+    app: hello-world-web-app-development
+    env: development
+spec:
+  template:
+    metadata:
+      labels:
+        app: hello-world-web-app-develop
+  containers:
+    - name: hello-world
+      image: dockercloud/hello-world
+      ports:
+        - containerPort: 80
