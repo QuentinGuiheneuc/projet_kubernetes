@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: hello-world-web-app-develop
+        app: hello-world-web-app-development
     spec:
       containers:
         - name: hello-world-web-app-develop
