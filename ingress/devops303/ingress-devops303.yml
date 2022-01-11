@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: applicationingress
+spec:
+  rules:
+    - host: quentin/devops303.fr
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: devops303-service
+                port:
+                  number: 80
