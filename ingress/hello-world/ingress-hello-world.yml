@@ -4,7 +4,7 @@ metadata:
   name: applicationingress
 spec:
   rules:
-    - host: quentin.fr
+    - host: hello-world.fr
       http:
         paths:
           - path: /

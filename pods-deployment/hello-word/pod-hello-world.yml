@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: hello-world
+  name: hello-world-serviceaccount
   namespace: prod
   labels:
-    app: hello-world-web-app-development
+    app: hello-world-web-app-develop
     env: development
 spec:
   template:
@@ -15,16 +15,16 @@ spec:
     - name: hello-world
       image: dockercloud/hello-world
       volumeMounts:
-      - mountPath: /var/run/secrets/tokens
-        name: adminToken
+        - mountPath: /var/run/secrets/tokens
+          name: admintoken
   serviceAccountName: admin
   volumes:
-  - name: adminToken
-    projected:
-      sources:
-      - serviceAccountToken:
-          path: adminToken
-          expirationSeconds: 86400
-          audience: some-oidc-audience
-      ports:
-        - containerPort: 80
+    - name: admintoken
+      projected:
+        sources:
+          - serviceAccountToken:
+              path: admintoken
+              expirationSeconds: 86400
+              audience: some-oidc-audience
+        ports:
+          - containerPort: 80
